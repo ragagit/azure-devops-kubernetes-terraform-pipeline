@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'azure-dockerhub-connection'
-        repository: 'ragagit/currency-exchange-devops'
+        repository: 'ragadocker/currency-exchange-devops'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
