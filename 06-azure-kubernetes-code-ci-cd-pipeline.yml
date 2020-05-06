@@ -42,7 +42,7 @@ stages:
   displayName: Deploy image
   jobs:  
   - job: Deploy
-    displayName: Depoloy
+    displayName: Deploy
     pool:
       vmImage: 'ubuntu-latest'
     steps:
