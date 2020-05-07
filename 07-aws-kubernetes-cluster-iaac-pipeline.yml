@@ -1,0 +1,40 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    backendServiceAWS: 'aws-for-terraform'
+    backendAWSBucketName: 'terraform-backend-state-ragacan'
+    backendAWSKey: 'kubernetes-dev.tfstate'
+    backendServiceArm: ''
+    backendAzureRmContainerName: ''
+    backendAzureRmKey: ''
+    backendAzureRmResourceGroupName: ''
+    backendAzureRmStorageAccountName: ''
+    backendGCPBucketName: ''
+    backendServiceGCP: ''
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    environmentServiceNameAWS: 'aws-for-terraform'
+    backendServiceArm: ''
+    backendAzureRmContainerName: ''
+    backendAzureRmKey: ''
+    backendAzureRmResourceGroupName: ''
+    backendAzureRmStorageAccountName: ''
+    backendGCPBucketName: ''
+    backendServiceGCP: ''
+    backendServiceAWS: ''
+    backendAWSBucketName: ''
+    backendAWSKey: ''
