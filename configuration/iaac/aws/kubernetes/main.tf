@@ -32,7 +32,7 @@ provider "kubernetes" {
 
 module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "in28minutes-cluster"
+  cluster_name    = "ragacanaws-cluster"
   cluster_version = "1.14"
   subnets         = ["subnet-11b33a5c", "subnet-76ca3029"] #CHANGE
   #subnets = data.aws_subnet_ids.subnets.ids
